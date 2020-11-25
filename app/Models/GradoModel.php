@@ -9,12 +9,12 @@ class GradoModel extends Models{
     protected $returnType       = 'array';
     protected $allowedFields    = ['grado', 'seccion', 'profesor'];
 
-    protected $useTimeStamps    = true;
+    protected $useTimestamps    = true;
     protected $createdField     = 'created_at';
     protected $updatedField     = 'updated_at';
 
     //Validaciones del modelo(Tabla)
-    protected $validationRules  =[
+    protected $validationRule  =[
         'grado' => 'required | alpha_space| min_lenght[5]| max_lenght[60] ',
         'seccion' => 'required | alpha_space| min_lenght[1]| max_lenght[2] '
         

@@ -1,28 +1,27 @@
 <?php namespace App\Controllers\API;
 
-use App\Models\EstudianteModel;
+use App\Models\ProfesorModel;
 use CodeIgniter\RESTful\ResourceController;
-
-class Estudiantes extends ResourceController
+class Profesores extends ResourceController
 {
 	public function __construct(){
-		$this ->model = $this->setModel(new EstudianteModel());
+		$this ->model = $this->setModel(new ProfesorModel());
 	}
 
 	public function index()
 	{
-		$estudiantes = $this->model->findAll();
-		return $this->respond($estudiantes);
+		$profesores = $this->model->findAll();
+		return $this->respond($profesores);
 		
 	}
 
 	public function create(){
 		try {
 
-			$estudiante = $this->request->getJSON();
-			if ($this->model->insert($estudiante)):
-				$estudiante->id=$this->model->insertID();
-				return $this->respondCreated($estudiante);
+			$profesor = $this->request->getJSON();
+            if ($this->model->insert($profesor)):
+                $profesor->id=$this->model->insertID();
+				return $this->respondCreated($profesor);
 			else:
 				return $this->failValidationError($this->model->validation->listErrors());
 			endif;
@@ -34,16 +33,17 @@ class Estudiantes extends ResourceController
 	public function edit($id = null)
 	{
 		try {
-			if ($id==null):
+			if ($id == null)
 				return $this->failValidationError('No se ha pasado un ID valido');
-				$estudiante= $this->model->find($id);
+			
+			$profesor= $this->model->find($id);
 
 				//validar que el ID no venga nulo
-			if ($estudiante == null)
+			if ($profesor == null)
 				return $this->failNotFound('No se ha encontrado un cliente con el id: '.$id);
 
-				return $this->respond($estudiante);
-			endif;
+				return $this->respond($profesor);
+
 		} catch (\Exception $e) {
 			return $this->failServerError('Ha ocurrido un error en el servidor');
 		}	
@@ -54,17 +54,17 @@ class Estudiantes extends ResourceController
 		try {
 			if ($id==null)
 				return $this->failValidationError('No se ha pasado un ID valido');
-				$estudianteVerificado= $this->model->find($id);
+				$profesorVerificado= $this->model->find($id);
 
 				//validar que el ID no venga nulo
-			if ($estudianteVerificado == null)
+			if ($profesorVerificado == null)
 				return $this->failNotFound('No se ha encontrado un cliente con el id: '.$id);
 
-				$estudiante =$this-> request->getJSON();
+				$profesor =$this-> request->getJSON();
 
-			if ($this->model->update($id, $estudiante)):
-				$estudiante-> id = $id;
-				return $this->respondUpdated($estudiante);
+			if ($this->model->update($id, $profesor)):
+				$profesor-> id = $id;
+				return $this->respondUpdated($profesor);
 			else:
 				return $this->failServerError($this->model->validation->listErrors());
 			endif;
@@ -79,15 +79,15 @@ class Estudiantes extends ResourceController
 		try {
 			if ($id== null)
 				return $this->failValidationError('No se ha pasado un ID valido');
-				$estudianteVerificado= $this->model->find($id);
+				$profesorVerificado= $this->model->find($id);
 
 				//validar que el ID no venga nulo
-			if ($estudianteVerificado == null)
+			if ($profesorVerificado == null)
 				return $this->failNotFound('No se ha encontrado un cliente con el id: '.$id);
 
 
 			if ($this->model->delete($id)):
-				return $this->respondDeleted($estudianteVerificado);
+				return $this->respondDeleted($profesorVerificado);
 			else:
 				return $this->failServerError('No se ha podido eliminar el registro');
 			endif;

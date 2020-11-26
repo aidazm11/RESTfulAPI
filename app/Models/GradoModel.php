@@ -14,9 +14,9 @@ class GradoModel extends Models{
     protected $updatedField     = 'updated_at';
 
     //Validaciones del modelo(Tabla)
-    protected $validationRule  =[
-        'grado' => 'required | alpha_space| min_lenght[5]| max_lenght[60] ',
-        'seccion' => 'required | alpha_space| min_lenght[1]| max_lenght[2] '
+    protected $validationRules  =[
+        'grado' => 'required | alpha_space| min_length[5]| max_length[60] ',
+        'seccion' => 'required | alpha_space| min_length[1]| max_length[2] '
         
     ];
     //mensajes predeterminados de CodeIgniter a usuarios

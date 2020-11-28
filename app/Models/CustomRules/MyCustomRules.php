@@ -10,7 +10,7 @@ class MyCustomRules
         $model = new ProfesorModel();
         $profesor = $model->find($id);
 
-       return $profesor == null?false:true;
+       return $profesor == null ? false : true;
     }
 
     public function is_valid_grado(int $id):bool
@@ -18,7 +18,7 @@ class MyCustomRules
         $model = new GradoModel();
         $grado = $model->find($id);
 
-       return $grado == null?false:true;
+       return $grado == null ? false : true;
     
     }
     

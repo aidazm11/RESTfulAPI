@@ -17,7 +17,7 @@ class GradoModel extends Model{
     protected $validationRules  =[
         'grado'       => 'required|alpha_space|min_length[5]|max_length[60]',
         'seccion'     => 'required|alpha_space|min_length[1]|max_length[2]',
-        'profesor_id' => 'required',
+        'profesor_id' => 'required|integer|is_valid_profesor',
         
     ];
     //mensajes predeterminados de CodeIgniter a usuarios

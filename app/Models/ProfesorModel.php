@@ -19,7 +19,7 @@ class ProfesorModel extends Model{
         'apellido'  => 'required|alpha_space|min_length[3]|max_length[75]',
         'profesion' => 'required|alpha_space|min_length[2]|max_length[3]',
         'telefono'  => 'required|alpha_numeric_space|min_length[8]|max_length[9]',
-        'dui'       => 'required|alpha_numeric_space|min_length[10]|max_length[10]',
+        'dui'       => 'required|regex_match[^\\d{8}-\\d$]',
     ];
     //mensajes predeterminados de CodeIgniter a usuarios
     protected $validationMessages  = [
@@ -52,10 +52,8 @@ class ProfesorModel extends Model{
         ],
 
         'dui' => [
-            'alpha_numeric_space' => 'Solo se permiten numeros',
+            'regex_match' => 'El formato es 00000000-0',
             'required'    => 'Este campo no puede ir vacio',
-            'min_length'    => 'El minimo de numeros es 10',
-            'max_length'    => 'El maximo de numeros es 10',
         ],
 
 

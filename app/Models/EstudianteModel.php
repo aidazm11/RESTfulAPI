@@ -20,7 +20,7 @@ class EstudianteModel extends Model{
         'dui'       => 'required|regex_match[^\\d{8}-\\d$]',
         'genero'    => 'required|regex_match[M|F|m|f]',
         'carnet'    => 'required|regex_match[^\\u|U\\d{8}$]',
-        'grado_id'  => 'required',
+        'grado_id'  => 'required|integer|is_valid_grado',
         
     ];
     //mensajes predeterminados de CodeIgniter a usuarios

@@ -6,7 +6,7 @@ use CodeIgniter\RESTful\ResourceController;
 class Grados extends ResourceController
 {
 	public function __construct(){
-		$this ->model = $this->setModel(new GradoModel());
+		$this->model = $this->setModel(new GradoModel());
 	}
 
 	public function index()
